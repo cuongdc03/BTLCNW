@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Đăng nhập</h1>
-<form action="Controller/LoginController" method="post">
+<form action="LoginController" method="post">
     <label for="username">Tên đăng nhập:</label>
     <input type="text" id="username" name="username" required><br><br>
 

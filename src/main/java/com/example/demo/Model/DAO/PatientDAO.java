@@ -1,6 +1,7 @@
 package com.example.demo.Model.DAO;
 
 import com.example.demo.Model.bean.Patient;
+import com.example.demo.Model.bean.User;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,7 +23,24 @@ public class PatientDAO {
             e.printStackTrace(); // Xử lý lỗi kết nối ở đây
         }
     }
+    public List<User> getallusers() throws SQLException {
+        List<User> users = new ArrayList<>();
 
+        String query = "SELECT username, password FROM patients";
+
+        try (PreparedStatement statement = cnn.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
+            while (resultSet.next()) {
+                String username = resultSet.getString("username");
+                String password = resultSet.getString("password");
+
+                User user = new User(username, password); // Tạo đối tượng User từ thông tin username và password
+                users.add(user);
+            }
+        }
+
+        return users;
+    }
     public List<Patient> getAllPatients() throws SQLException {
         List<Patient> patients = new ArrayList<>();
         String query = "SELECT * FROM patients";

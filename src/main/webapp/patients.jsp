@@ -8,9 +8,8 @@
 
 <%
 
-        // Xác thực người dùng thành công, hiển thị thông tin bệnh nhân
-        PatientDAO patientDAO = new PatientDAO();
-    List<Patient> patients = null;
+    PatientDAO patientDAO = new PatientDAO();
+    List<Patient> patients;
     try {
         patients = patientDAO.getAllPatients();
     } catch (SQLException e) {
